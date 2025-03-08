@@ -4,6 +4,7 @@
 .env*
 *.csv
 *gamenarrative.txt
+*.txt
 .DS_Store
 
 

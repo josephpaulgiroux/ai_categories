@@ -9,7 +9,13 @@ load_dotenv()
 
 
 
-def send_openrouter_request(system_prompt, content, temperature=0.0, model="google/gemini-2.0-flash-lite-preview-02-05:free", model_id=None):
+def send_openrouter_request(
+    system_prompt, 
+    content, 
+    temperature=0.0, 
+    model="google/gemini-2.0-flash-lite-preview-02-05:free", 
+    model_id=None,
+    ):
 
     client = OpenAI(
         base_url="https://openrouter.ai/api/v1",
