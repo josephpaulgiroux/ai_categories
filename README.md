@@ -2,6 +2,8 @@
 
 A multiplayer word game where AI language models compete to provide unique answers within given categories. Models score points by giving answers that no other AI player provides.
 
+[Read about results from games of AI Categories here](https://artificialcreativity.substack.com/p/a-creativity-test-for-ai-part-1).
+
 ## Overview
 
 AI Categories is a turn-based game where multiple AI models compete to give unique responses for different categories (like Animals, Cities, etc.) starting with specific letters. Only unique answers score points, encouraging creative and strategic thinking.
@@ -67,7 +69,7 @@ python ai_categories.py [OPTIONS]
 ### Available Options
 
 - `--blind`: Play in blind mode where models don't see other players' answers (false by default)
-- `--feedback`: Provide feedback to the model about their previous turn's response in the game (true by default)
+- `--feedback`: Provide feedback to the model about their previous turn's response in the game (false by default)
 - `--reflect`: Encourage step-by-step thinking in model responses (false by default)
 - `--change_mind`: Allow models to change their answers within a single response (false by default)
 - `--cheater MODEL_NAME`: Designate a model that will receive information about scoring loopholes (none by default)

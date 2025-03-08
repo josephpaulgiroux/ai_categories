@@ -4,6 +4,8 @@
 .env*
 *.csv
 *gamenarrative.txt
+.DS_Store
+
 
 # C extensions
 *.so

@@ -36,16 +36,21 @@ def send_openrouter_request(system_prompt, content, temperature=0.0, model="goog
         messages[0]["cache_control"] = {"type": "ephemeral"}
 
 
+    try:
+        completion = client.chat.completions.create(
+            extra_headers={
+                "HTTP-Referer": "artificialcreativity.substack.com", # Optional. Site URL for rankings on openrouter.ai.
+                "X-Title": "Artificial Creativity", # Optional. Site title for rankings on openrouter.ai.
+            },
+            model=model,
+            messages=messages,
+            temperature=temperature,
+        )
+    except KeyboardInterrupt:
+        print("Keyboard interrupt. Waiting for response.")
+        input("Press Enter to continue...")
+        return "No response returned, had to interrupt"
 
-    completion = client.chat.completions.create(
-        extra_headers={
-            "HTTP-Referer": "artificialcreativity.substack.com", # Optional. Site URL for rankings on openrouter.ai.
-            "X-Title": "Artificial Creativity", # Optional. Site title for rankings on openrouter.ai.
-        },
-        model=model,
-        messages=messages,
-        temperature=temperature,
-    )
     try:
         res = completion.choices[0].message.content
     except TypeError:
