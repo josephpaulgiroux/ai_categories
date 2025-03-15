@@ -13,7 +13,6 @@ from types import SimpleNamespace
 
 LETTERS = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
-
 DEFAULT_MODELS = {
     "Claude 3.5 Sonnet": dict(model="anthropic/claude-3.5-sonnet", temperature=None, custom_prompt=""),
     "Claude 3.5 Haiku": dict(model="anthropic/claude-3.5-haiku", temperature=None, custom_prompt=""),
@@ -23,9 +22,23 @@ DEFAULT_MODELS = {
     # "GPT-3.5-turbo": dict(model="openai/gpt-3.5-turbo", temperature=None, custom_prompt=""),
     "Mistral 7B": dict(model="mistralai/mistral-7b-instruct-v0.3", temperature=None, custom_prompt=""),
     "Gemini Flash 1.5 8B": dict(model="google/gemini-flash-1.5-8b", temperature=None, custom_prompt=""), 
-    "DeepSeek 8B": dict(model="deepseek/deepseek-r1-distill-llama-8b", temperature=None, custom_prompt="")
+    "DeepSeek 8B": dict(model="deepseek/deepseek-r1-distill-llama-8b", temperature=None, custom_prompt=""),
+    "Mistral Nemo": dict(model="mistralai/mistral-nemo", temperature=None, custom_prompt=""),
+    "Mistral Ministral 3B": dict(model="mistralai/ministral-3b", temperature=None, custom_prompt=""),
+    "Amazon Nova Micro": dict(model="amazon/nova-micro-v1", temperature=None, custom_prompt=""),
+    "Cohere: Command R7B": dict(model="cohere/command-r7b-12-2024", temperature=None, custom_prompt=""),
+    "Qwen 2 7B Instruct": dict(model="qwen/qwen-2-7b-instruct", temperature=None, custom_prompt=""),
+    "Qwen 2.5 7B Instruct": dict(model="qwen/qwen-2.5-7b-instruct", temperature=None, custom_prompt=""),
+    "Qwen QwQ 32B": dict(model="qwen/qwq-32b", temperature=None, custom_prompt=""),
 }
 
+
+DEFAULT_MODELS = {
+    "Player 1": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
+    "Player 2": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
+    # "Player 3": dict(model="anthropic/claude-3.5-haiku", temperature=None, custom_prompt=""),
+    # "Player 4": dict(model="anthropic/claude-3.5-haiku", temperature=None, custom_prompt=""),
+}
 
 def main():
     args = parse_args()
@@ -61,6 +74,7 @@ class AICategoryGame:
             models=None, 
             categories=None, 
             blind=True, 
+            feedback=False,
             reflect=False, 
             change_mind=False, 
             starting_point=None, 
@@ -81,6 +95,7 @@ class AICategoryGame:
         else:
             self.config = SimpleNamespace(
                 blind=blind,
+                feedback=feedback,
                 change_mind=change_mind,
                 reflect=reflect,
                 cheater=cheater,
@@ -160,6 +175,7 @@ class AICategoryGame:
 
         return  "Pay close attention to the players' responses from the previous round. If you see a pattern, use it to your advantage to score more points.\n\n" + "\n\n".join(self.game_history[-turns_back:])
 
+
     def get_personal_history_prompt(self, model_id):
         if not self.personal_histories[model_id] and not self.personal_responses[model_id]:
             return ""
@@ -168,7 +184,7 @@ class AICategoryGame:
             return ""
 
         return (
-            "Here was your response last round. Take this into account so that you improve your performance over multiple rounds: " 
+            "Here was your response last round. Take this into account so that you improve your performance over multiple rounds: \n\n" 
             + self.personal_histories[model_id]
             + self.personal_responses[model_id]
         )
