@@ -34,10 +34,10 @@ DEFAULT_MODELS = {
 
 
 DEFAULT_MODELS = {
-    "Player 1": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
-    "Player 2": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
-    # "Player 3": dict(model="anthropic/claude-3.5-haiku", temperature=None, custom_prompt=""),
-    # "Player 4": dict(model="anthropic/claude-3.5-haiku", temperature=None, custom_prompt=""),
+    # "Player 1": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
+    # "Player 2": dict(model="openai/gpt-4o", temperature=None, custom_prompt=""),
+    "Player 1": dict(model="deepseek/deepseek-chat-v3-0324", temperature=None, custom_prompt=""),
+    "Player 2": dict(model="deepseek/deepseek-chat-v3-0324", temperature=None, custom_prompt=""),
 }
 
 def main():

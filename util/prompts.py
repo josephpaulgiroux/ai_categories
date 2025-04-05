@@ -66,7 +66,7 @@ You are playing in blind mode.  You will not know the other players' answers.
 """
 
 BLIND_MODE_FALSE_INSTRUCTIONS = """
-You are playing in open mode.  You will see the other players' answers after each round. You should use this information strategically to help you choose unique responses.
+You are playing in open mode.  You will see the other players' answers after each round.
 """
 
 REFLECT_INSTRUCTIONS = """
